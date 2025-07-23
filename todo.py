@@ -45,7 +45,7 @@ def mark_done():
     tasks = load_task()
     view_task()
     try:
-        num = int(input('Enter task number to mark as done'))
+        num = int(input('Enter task number to mark as done: '))
         if 1 <= num <= len(tasks):
             if '[x]' in tasks[num-1]:
                 print('Task already marked as done')
@@ -61,7 +61,17 @@ def mark_done():
 
 
 def delete_task():
-    pass
+    tasks = load_task()
+    view_task()
+    try:
+        num = int(input('Enter task number to delete: '))
+        if 1 <= num <= len(tasks):
+            tasks.remove(tasks[num-1])
+            save_task(tasks)
+        else:
+            print('Invalid number')
+    except ValueError:
+        print('Please eneter a number.')
 
 
 def main():
